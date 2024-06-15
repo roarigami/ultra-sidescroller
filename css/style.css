@@ -20,7 +20,12 @@ Ultra Game Styling
   width:1000px;
   max-width:100%;
 }
-
+#loading {
+  text-align: center!important;
+  width:100%;
+  position:absolute;
+  top:40%;
+}
 img {
   display:none;
 }
