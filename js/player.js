@@ -8,7 +8,7 @@ class Player {
       this.width = 100;
       this.height = 91.3;
       this.x = 0;
-      this.y = 100;
+      this.y = this.game.height - this.height;
   }
 
   update() {
@@ -17,8 +17,8 @@ class Player {
 
   draw(context) {
     context.clearRect(0, 0, this.game.canvas.width, this.game.canvas.height)
-    context.fillRect(this.x, 50, 25, 25);
-    this.x++;
+    context.fillRect(this.x, this.y, this.width, this.height);
+    //this.x++;
   }
 
 }
