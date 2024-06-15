@@ -10,7 +10,7 @@ class Overworld {
     startGameLoop() {
         const animate = () => {
           this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-          this.ctx.fillRect(this.x, 50, 100, 100);
+          this.ctx.fillRect(this.x, 50, 25, 25);
           this.x++;
           // requestAnimationFrame(animate);
           requestAnimationFrame(() => {
