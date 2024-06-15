@@ -9,6 +9,7 @@ class GameControl {
       this.map = null;
 
       this.player = new Player(this);
+      this.input = new InputHandler();
     }
 
     update() {
