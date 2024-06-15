@@ -13,7 +13,7 @@ class GameControl {
     }
 
     update() {
-      this.player.update();
+      this.player.update(this.input.keys);
     }
 
     startGameLoop() {

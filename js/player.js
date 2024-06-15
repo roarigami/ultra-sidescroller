@@ -13,8 +13,10 @@ class Player {
       this.image = player;
   }
 
-  update() {
+  update(input) {
     //this.x++;
+    if(input.includes('ArrowRight')) this.x++;
+    else if(input.includes('ArrowLeft')) this.x--;
   }
 
   draw(context) {
