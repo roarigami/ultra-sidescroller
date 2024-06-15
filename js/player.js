@@ -11,12 +11,17 @@ class Player {
       this.y = this.game.height - this.height;
 
       this.image = player;
+      this.speed = 0;
+      this.maxSpeed = 10;
   }
 
   update(input) {
     //this.x++;
-    if(input.includes('ArrowRight')) this.x++;
-    else if(input.includes('ArrowLeft')) this.x--;
+    //Horizontal movement
+    this.x += this.speed;
+
+    if(input.includes('ArrowRight')) this.speed = this.maxSpeed;
+    else if(input.includes('ArrowLeft')) this.speed = -this.maxSpeed;
   }
 
   draw(context) {
