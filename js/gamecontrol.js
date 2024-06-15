@@ -11,8 +11,13 @@ class GameControl {
       this.player = new Player(this);
     }
 
+    update() {
+      this.player.update();
+    }
+
     startGameLoop() {
         const animate = () => {
+          this.update();
           this.player.draw(this.ctx);
           // requestAnimationFrame(animate);
           requestAnimationFrame(() => {
