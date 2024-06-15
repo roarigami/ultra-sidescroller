@@ -11,4 +11,12 @@ class Player {
       this.y = 100;
   }
 
+  update() {
+
+  }
+
+  draw(context) {
+
+  }
+
 }
