@@ -18,7 +18,6 @@ class Player {
   }
 
   draw(context) {
-    context.clearRect(0, 0, this.game.canvas.width, this.game.canvas.height)
     //context.fillRect(this.x, this.y, this.width, this.height);
     context.drawImage(this.image, 0, 0, this.width, this.height, this.x, this.y,
     this.width, this.height);
