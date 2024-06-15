@@ -1,7 +1,7 @@
 class Overworld {
     constructor(config) {
       this.element = config.element;
-      this.canvas = canvas10;
+      this.canvas = canvasUltra;
       this.ctx = this.canvas.getContext('2d', {willReadFrequently: true});
       this.map = null;
       this.x = 0;
