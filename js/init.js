@@ -1,8 +1,8 @@
 window.addEventListener('load', function() {
     loading.style.display = 'none';
-    const overworld = new Overworld({
+    const gamecontrol = new GameControl({
         element: gameContainer
     });
-    overworld.init();
+    gamecontrol.init();
 
 });
