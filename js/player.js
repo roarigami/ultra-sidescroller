@@ -42,6 +42,9 @@ class Player {
     if(!this.onGround()) this.vy += this.gravity;
     else this.vy = 0;
 
+    //Sprite animation
+    
+
   }
 
   draw(context) {

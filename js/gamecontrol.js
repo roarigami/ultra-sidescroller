@@ -13,6 +13,8 @@ class GameControl {
 
       this.player.currentState = this.player.playerStates[0];
       this.player.currentState.enter();
+
+      this.lastTime = 0;
     }
 
     update() {
@@ -20,16 +22,19 @@ class GameControl {
     }
 
     startGameLoop() {
-        const animate = () => {
+        const animate = (timeStamp) => {
+          const deltaTime = timeStamp - this.lastTime;
+          this.lastTime = timeStamp;
+
           this.ctx.clearRect(0, 0, this.width, this.height)
-          this.update();
+          this.update(deltaTime);
           this.player.draw(this.ctx);
           // requestAnimationFrame(animate);
           requestAnimationFrame(() => {
               animate();
           })
         }
-        animate();
+        animate(0);
     }
 
     startMap() {

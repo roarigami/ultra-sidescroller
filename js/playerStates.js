@@ -59,7 +59,6 @@ class Jumping extends PlayerState {
     }
     enter() {
         if(this.game.player.onGround()) this.game.player.vy -= 25;
-        console.log(this.game.player.vy);
         this.game.player.frameX = 0;
         this.game.player.frameY = 1;
     }
