@@ -8,7 +8,7 @@ class Player {
       this.width = 100;
       this.height = 91.3;
       this.x = 0;
-      this.y = this.game.height - this.height;
+      this.y = this.game.height - this.height - this.game.groundMargin;
       this.vy = 0;
       this.gravity = 1;
 
@@ -47,9 +47,6 @@ class Player {
     else this.vy = 0;
 
     //Sprite animation
-    // if(this.frameX < this.maxFrame) this.frameX++;
-    // else this.frameX = 0
-    //console.log(this.frameTimer);
     if(this.frameTimer > this.frameInterval) {
         this.frameTimer = 0;
         if(this.frameX < this.maxFrame) this.frameX++;
@@ -67,7 +64,7 @@ class Player {
   }
 
   onGround() {
-      return this.y >= this.game.height - this.height;
+      return this.y >= this.game.height - this.height - this.game.groundMargin;
   }
 
   setState(playerState) {

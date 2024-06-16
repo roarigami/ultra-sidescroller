@@ -7,6 +7,7 @@ class GameControl {
       this.width = canvasUltra.width;
       this.ctx = this.canvas.getContext('2d', {willReadFrequently: true});
       this.map = null;
+      this.groundMargin = 0;
 
       this.player = new Player(this);
       this.input = new InputHandler(this);
