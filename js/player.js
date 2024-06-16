@@ -10,6 +10,7 @@ class Player {
       this.x = 0;
       this.y = this.game.height - this.height;
       this.vy = 0;
+      this.gravity = 1;
 
       this.image = player;
       this.speed = 0;
@@ -28,9 +29,10 @@ class Player {
     if(this.x > this.game.width - this.width) this.x = this.game.width - this.width;
 
     //vertical movement
-    this.y += this.vy;
     if(input.includes('ArrowUp') && this.isOnGround()) this.vy -= 25;
-    
+    this.y += this.vy;
+    if(!this.isOnGround()) this.vy += this.gravity;
+    else this.vy = 0;
 
   }
 
