@@ -9,6 +9,7 @@ class Player {
       this.height = 91.3;
       this.x = 0;
       this.y = this.game.height - this.height;
+      this.vy = 0;
 
       this.image = player;
       this.speed = 0;
@@ -25,12 +26,22 @@ class Player {
     else this.speed = 0;
     if(this.x < 0) this.x = 0;
     if(this.x > this.game.width - this.width) this.x = this.game.width - this.width;
+
+    //vertical movement
+    this.y += this.vy;
+    if(input.includes('ArrowUp') && this.isOnGround()) this.vy -= 25;
+    
+
   }
 
   draw(context) {
     //context.fillRect(this.x, this.y, this.width, this.height);
     context.drawImage(this.image, 0, 0, this.width, this.height, this.x, this.y,
     this.width, this.height);
+  }
+
+  isOnGround() {
+      return this.y >= this.game.height - this.height;
   }
 
 }
