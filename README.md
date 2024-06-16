@@ -1,2 +1,2 @@
 # ultra-sidescroller
-Sidescrolling platform game 
+Sidescroller game with multiple levels 
