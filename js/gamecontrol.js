@@ -17,8 +17,8 @@ class GameControl {
       this.lastTime = 0;
     }
 
-    update() {
-      this.player.update(this.input.keys);
+    update(deltaTime) {
+      this.player.update(this.input.keys, deltaTime);
     }
 
     startGameLoop() {

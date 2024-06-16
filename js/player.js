@@ -15,6 +15,10 @@ class Player {
       this.image = player;
       this.frameX = 0;
       this.frameY = 0;
+      this.maxFrame;
+      this.fps = 20;
+      this.frameInterval = 1000/this.fps;
+      this.frameTimer = 0;
       this.speed = 0;
       this.maxSpeed = 10;
 
@@ -23,7 +27,7 @@ class Player {
 
   }
 
-  update(input) {
+  update(input, deltaTime) {
     //this.x++;
     this.currentState.handleInput(input);
 
@@ -43,7 +47,15 @@ class Player {
     else this.vy = 0;
 
     //Sprite animation
-    
+    if(this.frameX < this.maxFrame) this.frameX++;
+    else this.frameX = 0;
+    // if(this.frameTimer > this.frameInterval) {
+    //     this.frameTimer = 0;
+    //     if(this.frameX < this.maxFrame) this.frameX++;
+    //     else this.frameX = 0;
+    // } else {
+    //     this.frameTimer += deltaTime;
+    // }
 
   }
 
