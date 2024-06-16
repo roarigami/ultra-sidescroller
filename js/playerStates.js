@@ -22,9 +22,33 @@ class Sitting extends PlayerState {
         super('SITTING', game);
     }
     enter() {
-      
+        this.game.player.frameX = 0;
+        this.game.player.frameY = 5;
     }
     handleInput(input) {
+      if(input.includes('ArrowLeft') || input.includes('ArrowRight')) {
+          this.game.player.setState(playerStates.RUNNING, 3);
+      } else if(input.includes('r')) {
+          this.game.player.setState(playerStates.ROLLING, 10);
+      }
+    }
+}
 
+class Running extends PlayerState {
+    constructor(game) {
+        super('RUNNING', game);
+    }
+    enter() {
+        this.game.player.frameX = 0;
+        this.game.player.frameY = 3;
+    }
+    handleInput(input) {
+        if(input.includes('ArrowDown')) {
+            this.game.player.setState(playerStates.SITTING, 0);
+        } else if(input.includes('ArrowUp')) {
+            this.game.player.setState(playerStates.JUMPING, 3);
+        } else if(input.includes('r')) {
+            this.game.player.setState(playerStates.ROLLING, 10);
+        }
     }
 }

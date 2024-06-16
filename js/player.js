@@ -23,6 +23,8 @@ class Player {
 
   update(input) {
     //this.x++;
+    this.currentState.handleInput(input);
+
     //Horizontal movement
     this.x += this.speed;
 
@@ -48,6 +50,12 @@ class Player {
 
   isOnGround() {
       return this.y >= this.game.height - this.height;
+  }
+
+  setState(playerState) {
+      //Make sure all methods that are using setState are passing all expected arguments otherwise it won't work
+      this.currentState = this.playerStates[playerState];
+      this.currentState.enter();
   }
 
 }
