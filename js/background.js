@@ -13,8 +13,9 @@ class Layer {
       else this.x -= this.game.speed * this.speedModifier;
     }
 
-    draw() {
-
+    draw(context) {
+      context.drawImage(this.image, this.x, this.y, this.width, this.height);
+      context.drawImage(this.image, this.x + this.width, this.y, this.width, this.height);
     }
 
 }
