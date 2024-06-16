@@ -47,15 +47,16 @@ class Player {
     else this.vy = 0;
 
     //Sprite animation
-    if(this.frameX < this.maxFrame) this.frameX++;
-    else this.frameX = 0;
-    // if(this.frameTimer > this.frameInterval) {
-    //     this.frameTimer = 0;
-    //     if(this.frameX < this.maxFrame) this.frameX++;
-    //     else this.frameX = 0;
-    // } else {
-    //     this.frameTimer += deltaTime;
-    // }
+    // if(this.frameX < this.maxFrame) this.frameX++;
+    // else this.frameX = 0
+    //console.log(this.frameTimer);
+    if(this.frameTimer > this.frameInterval) {
+        this.frameTimer = 0;
+        if(this.frameX < this.maxFrame) this.frameX++;
+        else this.frameX = 0;
+    } else {
+        this.frameTimer += deltaTime;
+    }
 
   }
 

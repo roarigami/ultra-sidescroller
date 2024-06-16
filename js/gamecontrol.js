@@ -29,10 +29,12 @@ class GameControl {
           this.ctx.clearRect(0, 0, this.width, this.height)
           this.update(deltaTime);
           this.player.draw(this.ctx);
-          // requestAnimationFrame(animate);
-          requestAnimationFrame(() => {
-              animate();
-          })
+          requestAnimationFrame(animate);
+
+          //Does not pass deltaTime variable. frameTimer NaN
+          // requestAnimationFrame(() => {
+          //     animate();
+          // })
         }
         animate(0);
     }
