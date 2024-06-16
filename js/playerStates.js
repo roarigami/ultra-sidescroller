@@ -52,3 +52,27 @@ class Running extends PlayerState {
         }
     }
 }
+
+class Jumping extends PlayerState {
+    constructor(game) {
+        super('JUMPING', game);
+    }
+    enter() {
+        if(this.game.player.onGround()) this.game.player.vy -= 25;
+        console.log(this.game.player.vy);
+        this.game.player.frameX = 0;
+        this.game.player.frameY = 1;
+    }
+    handleInput(input) {
+        if(this.game.player.vy > this.game.player.gravity) {
+            this.game.player.setState(playerStates.FALLING , 3);
+        } else if(input.includes('r')) {
+            this.game.player.setState(playerStates.ROLLING, 10);
+        } else if(input.includes('ArrowDown')) {
+            this.game.player.setState(playerStates.DIVING, 0);
+        }
+        // if(input.includes('ArrowUp')) {
+        //     this.game.player.setState(playerStates.SITTING);
+        // }
+    }
+}

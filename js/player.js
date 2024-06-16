@@ -18,8 +18,9 @@ class Player {
       this.speed = 0;
       this.maxSpeed = 10;
 
-      this.playerStates = [new Sitting(this.game), new Running(this.game)];
-      
+      this.playerStates = [new Sitting(this.game), new Running(this.game),
+                           new Jumping(this.game)];
+
   }
 
   update(input) {
@@ -36,9 +37,9 @@ class Player {
     if(this.x > this.game.width - this.width) this.x = this.game.width - this.width;
 
     //vertical movement
-    if(input.includes('ArrowUp') && this.isOnGround()) this.vy -= 25;
+    // if(input.includes('ArrowUp') && this.onGround()) this.vy -= 25;
     this.y += this.vy;
-    if(!this.isOnGround()) this.vy += this.gravity;
+    if(!this.onGround()) this.vy += this.gravity;
     else this.vy = 0;
 
   }
@@ -49,7 +50,7 @@ class Player {
     this.width, this.height);
   }
 
-  isOnGround() {
+  onGround() {
       return this.y >= this.game.height - this.height;
   }
 
