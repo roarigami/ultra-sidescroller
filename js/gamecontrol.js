@@ -9,7 +9,10 @@ class GameControl {
       this.map = null;
 
       this.player = new Player(this);
-      this.input = new InputHandler();
+      this.input = new InputHandler(this);
+
+      this.player.currentState = this.player.playerStates[0];
+      this.player.currentState.enter();
     }
 
     update() {

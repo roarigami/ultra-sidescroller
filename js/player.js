@@ -18,7 +18,8 @@ class Player {
       this.speed = 0;
       this.maxSpeed = 10;
 
-      this.playerStates = [new Sitting(this.game)];
+      this.playerStates = [new Sitting(this.game), new Running(this.game)];
+      
   }
 
   update(input) {
