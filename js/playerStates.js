@@ -76,3 +76,20 @@ class Jumping extends PlayerState {
         // }
     }
 }
+
+class Falling extends PlayerState {
+    constructor(game) {
+        super('FALLING', game);
+    }
+    enter() {
+        this.game.player.frameX = 0;
+        this.game.player.frameY = 2;
+    }
+    handleInput(input) {
+        if(this.game.player.onGround()) {
+            this.game.player.setState(playerStates.RUNNING, 3);
+        } else if(input.includes('ArrowDown')) {
+            this.game.player.setState(playerStates.DIVING, 0);
+        }
+    }
+}

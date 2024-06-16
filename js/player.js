@@ -19,7 +19,7 @@ class Player {
       this.maxSpeed = 10;
 
       this.playerStates = [new Sitting(this.game), new Running(this.game),
-                           new Jumping(this.game)];
+                           new Jumping(this.game), new Falling(this.game),];
 
   }
 
