@@ -9,3 +9,22 @@ const playerStates = {
     DIZZY: 7,
     KNOCKOUT: 8
 }
+
+class PlayerState {
+    constructor(playerState, game) {
+        this.game = game;
+        this.game.playerState = playerState;
+    }
+}
+
+class Sitting extends PlayerState {
+    constructor(game) {
+        super('SITTING', game);
+    }
+    enter() {
+      
+    }
+    handleInput(input) {
+
+    }
+}

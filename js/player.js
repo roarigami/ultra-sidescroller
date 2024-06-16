@@ -13,8 +13,12 @@ class Player {
       this.gravity = 1;
 
       this.image = player;
+      this.frameX = 0;
+      this.frameY = 0;
       this.speed = 0;
       this.maxSpeed = 10;
+
+      this.playerStates = [new Sitting(this.game)];
   }
 
   update(input) {
@@ -38,7 +42,7 @@ class Player {
 
   draw(context) {
     //context.fillRect(this.x, this.y, this.width, this.height);
-    context.drawImage(this.image, 0, 0, this.width, this.height, this.x, this.y,
+    context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y,
     this.width, this.height);
   }
 
