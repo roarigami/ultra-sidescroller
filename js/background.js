@@ -7,7 +7,6 @@ class Layer {
       this.image = image;
       this.x = 0;
       this.y = 0;
-      console.log(this.x);
     }
 
     update() {

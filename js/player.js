@@ -67,9 +67,10 @@ class Player {
       return this.y >= this.game.height - this.height - this.game.groundMargin;
   }
 
-  setState(playerState) {
+  setState(playerState, speed) {
       //Make sure all methods that are using setState are passing all expected arguments otherwise it won't work
       this.currentState = this.playerStates[playerState];
+      this.game.speed = speed;
       this.currentState.enter();
   }
 
