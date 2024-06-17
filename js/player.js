@@ -48,6 +48,11 @@ class Player {
     if(!this.onGround()) this.vy += this.gravity;
     else this.vy = 0;
 
+    //VERTICAL BOUNDARIES
+    if(this.y > this.game.height - this.height - this.game.groundMargin) {
+        this.y = this.game.height - this.height - this.game.groundMargin;
+    }
+
     //Sprite animation
     if(this.frameTimer > this.frameInterval) {
         this.frameTimer = 0;
