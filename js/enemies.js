@@ -12,6 +12,24 @@ class Enemy {
     }
 
     draw() {
-      
+
+    }
+}
+
+class AerialEnemy extends Enemy {
+    constructor() {
+      super();
+    }
+}
+
+class GroundEnemy extends Enemy {
+    constructor() {
+      super();
+    }
+}
+
+class ClimbingEnemy extends Enemy {
+    constructor() {
+      super();
     }
 }
