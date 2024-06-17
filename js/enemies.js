@@ -7,8 +7,17 @@ class Enemy {
       this.frameTimer = 0;
     }
 
-    update() {
-
+    update(deltaTime) {
+        //Movement
+        this.x -= this.speedX + this.game.speed;
+        this.y += this.speedY;
+        if(this.frameTimer > this.frameInterval) {
+            this.frameTimer = 0;
+            if(this.frameX < this.maxFrame) this.frameX++;
+            else this.frameX = 0;
+        } else {
+            this.frameTimer += deltaTime;
+        }
     }
 
     draw() {
