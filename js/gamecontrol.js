@@ -17,6 +17,7 @@ class GameControl {
       this.input = new InputHandler(this);
       this.UI = new UserInterface(this);
 
+      this.particles = [];
       this.enemies = [];
       this.enemyTimer = 0;
       this.enemyInterval = 1000;
@@ -47,6 +48,16 @@ class GameControl {
           if(enemy.markedForDeletion) this.enemies.splice(this.enemies.indexOf(enemy), 1);
       });
 
+      //Handle Particles
+      this.particles.forEach((particle, index) => {
+          particle.update();
+          if(particle.markedForDeletion) this.particles.splice(index, 1);
+      });
+      if(this.particles.length > this.maxParticles) {
+          this.particles.length = this.maxParticles;
+          //this.particles = this.particles.slice(0, this.maxParticles);
+      }
+
     }
 
     startGameLoop(context) {
@@ -61,6 +72,11 @@ class GameControl {
           this.player.draw(context);
           this.enemies.forEach(enemy => {
               enemy.draw(context);
+          });
+
+          //Draw Particles
+          this.particles.forEach(particle => {
+              particle.draw(context);
           });
 
           this.UI.draw(context)
@@ -81,7 +97,6 @@ class GameControl {
         if(this.speed > 0 && Math.random() < 0.5) this.enemies.push(new GroundEnemy(this));
         else if(this.speed > 0) this.enemies.push(new ClimbingEnemy(this));
         this.enemies.push(new AerialEnemy(this));
-        console.log(this.enemies);
     }
 
     startMap() {

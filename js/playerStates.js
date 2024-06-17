@@ -45,6 +45,8 @@ class Running extends PlayerState {
         this.game.player.maxFrame = 8;
     }
     handleInput(input) {
+      this.game.particles.unshift(new Dust(this.game, this.game.player.x + this.game.player.width * 0.6,
+        this.game.player.y + this.game.player.height));
         if(input.includes('ArrowDown')) {
             this.game.player.setState(playerStates.SITTING, 0);
         } else if(input.includes('ArrowUp')) {

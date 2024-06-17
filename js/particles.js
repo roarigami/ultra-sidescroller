@@ -10,3 +10,45 @@ class Particle {
       if(this.size < 0.5) this.markedForDeletion = true;
   }
 }
+
+
+class Dust extends Particle  {
+    constructor(game, x, y) {
+      super(game);
+      this.size = Math.random() * 10 + 10;
+      this.x = x;
+      this.y = y;
+      this.speedX = Math.random();
+      this.speedY = Math.random();
+      this.color = 'rgba(0,0,0,0.2)';
+    }
+
+    draw(context) {
+      context.beginPath();
+      context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      context.fillStyle = this.color;
+      context.fill();
+    }
+}
+
+class Splash extends Particle  {
+    constructor(game, x, y) {
+      super(game);
+
+    }
+
+    draw(context) {
+
+    }
+}
+
+class Flame extends Particle  {
+    constructor(game, x, y) {
+      super(game);
+
+    }
+
+    draw(context) {
+
+    }
+}
