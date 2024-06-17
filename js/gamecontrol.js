@@ -21,6 +21,7 @@ class GameControl {
       this.enemyInterval = 1000;
 
       this.debug = false;
+      this.score = 0;
 
       this.player.currentState = this.player.playerStates[0];
       this.player.currentState.enter();

@@ -29,6 +29,7 @@ class Player {
 
   update(input, deltaTime) {
     //this.x++;
+    this.checkCollision();
     this.currentState.handleInput(input);
 
     //Horizontal movement
@@ -73,6 +74,23 @@ class Player {
       this.currentState = this.playerStates[playerState];
       this.game.speed = speed;
       this.currentState.enter();
+  }
+
+  checkCollision() {
+    this.game.enemies.forEach(enemy => {
+        if(enemy.x < this.x + this.width &&
+        enemy.x + enemy.width > this.x &&
+        enemy.y < this.y + this.height &&
+        enemy.y + enemy.height > this.y) {
+          //collision detected
+
+          enemy.markedForDeletion = true;
+
+        }
+        // else {
+        //   //no collision
+        // }
+    });
   }
 
 }
