@@ -19,3 +19,19 @@ class Layer {
     }
 
 }
+
+
+class Background {
+    constructor() {
+      this.game = game;
+      this.width = 1667;
+      this.height = 500;
+      this.imageLayer1 = bgLayer1;
+      this.imageLayer2 = bgLayer2;
+      this.imageLayer3 = bgLayer3;
+      this.imageLayer4 = bgLayer4;
+      this.imageLayer5 = bgLayer5;
+
+      this.layer1 = new Layer(this.game, this.width, this.height, 0, this.imageLayer1);
+    }
+}

@@ -9,6 +9,7 @@ class GameControl {
       this.map = null;
       this.groundMargin = 50;
 
+      this.background = new Background(this);
       this.player = new Player(this);
       this.input = new InputHandler(this);
 
