@@ -57,7 +57,7 @@ class GameControl {
           this.enemies.forEach(enemy => {
               enemy.draw(context);
           });
-          
+
           requestAnimationFrame(animate);
 
           //Does not pass deltaTime variable. frameTimer NaN
@@ -71,8 +71,7 @@ class GameControl {
     addEnemy() {
         //Only want to add plant ground chaacters when the game is moving
         //Otherwise they would just be accumulating off screen
-        // if(this.speed > 0 && Math.random() < 0.5) this.enemies.push(new GroundEnemy(this));
-        // else if(this.speed > 0) this.enemies.push(new ClimbingEnemy(this));
+        if(this.speed > 0 && Math.random() < 0.5) this.enemies.push(new GroundEnemy(this));
         this.enemies.push(new AerialEnemy(this));
         console.log(this.enemies);
     }
