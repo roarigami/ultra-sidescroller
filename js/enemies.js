@@ -42,10 +42,17 @@ class AerialEnemy extends Enemy {
       this.speedY = 0;
       this.maxFrame = 5;
       this.image = enemyAir;
+
+      //Wavy up and down movement
+      this.angle = 0;
+      this.va = Math.random() * 0.1 + 0.1;
     }
 
     update(deltaTime) {
         super.update(deltaTime);
+        this.angle += this.va;
+        this.y += Math.sin(this.angle);
+        //this.x += Math.cos(this.angle);
     }
 }
 
