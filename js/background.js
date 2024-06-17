@@ -34,4 +34,18 @@ class Background {
 
       this.layer1 = new Layer(this.game, this.width, this.height, 0, this.imageLayer1);
     }
+
+    update() {
+        this.backgroundLayers.forEach(layer => {
+            layer.update();
+        });
+    }
+
+    draw(context) {
+      this.backgroundLayers.forEach(layer => {
+          layer.draw(context);
+      });
+    }
+
+
 }
