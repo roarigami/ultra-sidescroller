@@ -37,6 +37,11 @@ class GameControl {
       } else {
           this.enemyTimer += deltaTime;
       }
+      this.enemies.forEach(enemy => {
+          enemy.update(deltaTime);
+          if(enemy.markedForDeletion) this.enemies.splice(this.enemies.indexOf(enemy), 1);
+      });
+
     }
 
     startGameLoop(context) {
@@ -49,6 +54,10 @@ class GameControl {
 
           this.background.draw(context);
           this.player.draw(context);
+          this.enemies.forEach(enemy => {
+              enemy.draw(context);
+          });
+          
           requestAnimationFrame(animate);
 
           //Does not pass deltaTime variable. frameTimer NaN
