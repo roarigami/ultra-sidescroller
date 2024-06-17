@@ -96,3 +96,49 @@ class Falling extends PlayerState {
         }
     }
 }
+
+ class Rolling extends PlayerState {
+    constructor(game) {
+        super('ROLLING', game);
+    }
+    enter() {
+        this.game.player.frameX = 0;
+        this.game.player.frameY = 6;
+        this.game.player.maxFrame = 6;
+    }
+    handleInput(input) {
+
+
+        if(!input.includes('r') && this.game.player.onGround()) {
+            this.game.player.setState(playerStates.RUNNING, 3);
+        } else if(!input.includes('r') && !this.game.player.onGround()) {
+            this.game.player.setState(playerStates.FALLING, 3);
+        } else if(input.includes('r') && input.includes('ArrowUp') && this.game.player.onGround()) {
+            this.game.player.vy -= 25;
+        } else if(input.includes('ArrowDown') && !this.game.player.onGround()) {
+            this.game.player.setState(playerStates.DIVING, 0);
+        }
+    }
+}
+
+
+ class Diving extends PlayerState {
+    constructor(game) {
+        super('DIVING', game);
+    }
+    enter() {
+        this.game.player.frameX = 0;
+        this.game.player.frameY = 6;
+        this.game.player.maxFrame = 6;
+        this.game.player.vy = 35;
+    }
+    handleInput(input) {
+
+        if(this.game.player.onGround()) {
+            this.game.player.setState(playerStates.RUNNING, 3);
+        } else if(input.includes('r') && this.game.player.onGround()) {
+            this.game.player.setState(playerStates.ROLLING, 10);
+        }
+
+    }
+}
