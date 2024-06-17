@@ -18,6 +18,7 @@ class GameControl {
       this.UI = new UserInterface(this);
 
       this.particles = [];
+      this.maxParticles = 100;
       this.enemies = [];
       this.enemyTimer = 0;
       this.enemyInterval = 1000;

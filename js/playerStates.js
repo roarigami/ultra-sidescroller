@@ -109,7 +109,8 @@ class Falling extends PlayerState {
         this.game.player.maxFrame = 6;
     }
     handleInput(input) {
-
+      this.game.particles.unshift(new Flame(this.game, this.game.player.x + this.game.player.width * 0.5,
+        this.game.player.y + this.game.player.height * 0.5));
 
         if(!input.includes('r') && this.game.player.onGround()) {
             this.game.player.setState(playerStates.RUNNING, 3);
@@ -135,9 +136,16 @@ class Falling extends PlayerState {
         this.game.player.vy = 35;
     }
     handleInput(input) {
+      this.game.particles.unshift(new Flame(this.game, this.game.player.x + this.game.player.width * 0.5,
+        this.game.player.y + this.game.player.height * 0.5));
 
         if(this.game.player.onGround()) {
             this.game.player.setState(playerStates.RUNNING, 3);
+            //Creates a splash of 30 particles
+            for(let i = 0; i < 100; i++) {
+                this.game.particles.unshift(new Splash(this.game, this.game.player.x + this.game.player.width * 0.5,
+                  this.game.player.y + this.game.player.height));
+            }
         } else if(input.includes('r') && this.game.player.onGround()) {
             this.game.player.setState(playerStates.ROLLING, 10);
         }
