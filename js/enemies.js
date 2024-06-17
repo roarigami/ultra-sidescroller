@@ -20,25 +20,39 @@ class Enemy {
         }
     }
 
-    draw() {
-
+    draw(context) {
+      context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height,
+        this.x, this.y, this.width, this.height);
     }
 }
 
 class AerialEnemy extends Enemy {
-    constructor() {
+    constructor(game) {
       super();
+      this.game = game;
+      this.width = 60;
+      this.height = 44;
+      this.x = this.game.width + Math.random() * this.game.width * 0.5;
+      this.y = Math.random() * this.game.height * 0.5;
+      this.speedX = Math.random() + 1;
+      this.speedY = 0;
+      this.maxFrame = 5;
+      this.image = enemyAir;
+    }
+
+    update(deltaTime) {
+        super.update(deltaTime);
     }
 }
 
 class GroundEnemy extends Enemy {
-    constructor() {
+    constructor(game) {
       super();
     }
 }
 
 class ClimbingEnemy extends Enemy {
-    constructor() {
+    constructor(game) {
       super();
     }
 }
