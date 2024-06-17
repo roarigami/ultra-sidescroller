@@ -16,6 +16,10 @@ class GameControl {
       this.player = new Player(this);
       this.input = new InputHandler(this);
 
+      this.enemies = [];
+      this.enemyTimer = 0;
+      this.enemyInterval = 1000;
+
       this.player.currentState = this.player.playerStates[0];
       this.player.currentState.enter();
 
@@ -25,6 +29,14 @@ class GameControl {
     update(deltaTime) {
       this.background.update();
       this.player.update(this.input.keys, deltaTime);
+
+      //Enemy handler
+      if(this.enemyTimer > this.enemyInterval) {
+          this.addEnemy();
+          this.enemyTimer = 0;
+      } else {
+          this.enemyTimer += deltaTime;
+      }
     }
 
     startGameLoop(context) {
@@ -45,6 +57,15 @@ class GameControl {
           // })
         }
         animate(0);
+    }
+
+    addEnemy() {
+        //Only want to add plant ground chaacters when the game is moving
+        //Otherwise they would just be accumulating off screen
+        // if(this.speed > 0 && Math.random() < 0.5) this.enemies.push(new GroundEnemy(this));
+        // else if(this.speed > 0) this.enemies.push(new ClimbingEnemy(this));
+        this.enemies.push(new AerialEnemy(this));
+        console.log(this.enemies);
     }
 
     startMap() {
