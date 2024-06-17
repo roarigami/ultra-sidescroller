@@ -15,6 +15,7 @@ class GameControl {
       this.background = new Background(this);
       this.player = new Player(this);
       this.input = new InputHandler(this);
+      this.UI = new UserInterface(this);
 
       this.enemies = [];
       this.enemyTimer = 0;
@@ -22,6 +23,7 @@ class GameControl {
 
       this.debug = false;
       this.score = 0;
+      this.fontColor = 'black';
 
       this.player.currentState = this.player.playerStates[0];
       this.player.currentState.enter();
@@ -60,6 +62,8 @@ class GameControl {
           this.enemies.forEach(enemy => {
               enemy.draw(context);
           });
+
+          this.UI.draw(context)
 
           requestAnimationFrame(animate);
 
