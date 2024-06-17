@@ -7,7 +7,9 @@ class GameControl {
       this.width = canvasUltra.width;
       this.ctx = this.canvas.getContext('2d', {willReadFrequently: true});
       this.map = null;
+
       this.groundMargin = 50;
+      this.speed = 3;
 
       this.background = new Background(this);
       this.player = new Player(this);
@@ -20,17 +22,20 @@ class GameControl {
     }
 
     update(deltaTime) {
+      this.background.update();
       this.player.update(this.input.keys, deltaTime);
     }
 
-    startGameLoop() {
+    startGameLoop(context) {
         const animate = (timeStamp) => {
           const deltaTime = timeStamp - this.lastTime;
           this.lastTime = timeStamp;
 
-          this.ctx.clearRect(0, 0, this.width, this.height)
+          context.clearRect(0, 0, this.width, this.height)
           this.update(deltaTime);
-          this.player.draw(this.ctx);
+
+          this.background.draw(context);
+          this.player.draw(context);
           requestAnimationFrame(animate);
 
           //Does not pass deltaTime variable. frameTimer NaN
@@ -46,7 +51,7 @@ class GameControl {
     }
 
     init() {
-      this.startGameLoop();
+      this.startGameLoop(this.ctx);
     }
 
 }
