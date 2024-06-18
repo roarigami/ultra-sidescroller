@@ -33,6 +33,12 @@ class GameControl {
       this.player.currentState.enter();
 
       this.lastTime = 0;
+      this.lives = 5;
+
+      //Time Limit Function
+      // this.time = 0;
+      // this.maxTime = 2000;
+      this.gameOver = false;
     }
 
     update(deltaTime) {
