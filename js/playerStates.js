@@ -174,3 +174,37 @@ class Hit extends PlayerState {
         }
     }
 }
+
+class Dizzy extends PlayerState {
+    constructor(game) {
+        super('DIZZY', game);
+    }
+    enter() {
+        this.game.player.frameX = 0;
+        this.game.player.frameY = 4;
+        this.game.player.maxFrame = 10;
+    }
+    handleInput(input) {
+        if(this.game.player.frameX >= 10 && this.game.player.onGround()) {
+            this.game.player.setState(playerStates.RUNNING, 3);
+        } else if(this.game.player.frameX >= 10 && !this.game.player.onGround()) {
+            this.game.player.setState(playerStates.FALLING, 3);
+        }
+    }
+}
+
+class Knockout extends PlayerState {
+    constructor(game) {
+        super('KNOCKOUT', game);
+    }
+    enter() {
+        this.game.player.frameX = 0;
+        this.game.player.frameY = 8;
+        this.game.player.maxFrame = 11;
+    }
+    handleInput(input) {
+        if(this.game.player.frameX >= 11 && this.game.player.onGround()) {
+            this.game.gameOver = true;
+        }
+    }
+}

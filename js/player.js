@@ -25,7 +25,8 @@ class Player {
       this.playerStates = [new Sitting(this.game), new Running(this.game),
                            new Jumping(this.game), new Falling(this.game),
                            new Rolling(this.game), new Diving(this.game),
-                           new Hit(this.game)];
+                           new Hit(this.game), new Dizzy(this.game),
+                           new Knockout(this.game)];
 
   }
 
