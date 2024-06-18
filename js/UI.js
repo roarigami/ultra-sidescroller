@@ -2,7 +2,7 @@ class UserInterface {
   constructor(game) {
       this.game = game;
       this.fontSize = 30;
-      this.fontFamily = 'Helvetica';
+      this.fontFamily = 'Frijole';
       this.livesImage = lifeSprite;
   }
   draw(context) {
