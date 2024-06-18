@@ -114,7 +114,7 @@ class GameControl {
 
           this.UI.draw(context)
 
-          if(!game.gameOver) requestAnimationFrame(animate);
+          if(!this.gameOver) requestAnimationFrame(animate);
 
           //Does not pass deltaTime variable. frameTimer NaN
           // requestAnimationFrame(() => {

@@ -38,8 +38,16 @@ class Player {
     //Horizontal movement
     this.x += this.speed;
 
-    if(input.includes('ArrowRight')) this.speed = this.maxSpeed;
-    else if(input.includes('ArrowLeft')) this.speed = -this.maxSpeed;
+    //Prohibits horizontal movement when player is in 'Hit' or 'Dizzy' states
+    if(input.includes('ArrowRight') &&
+       this.currentState !== this.playerStates[6] &&
+       this.currentState !== this.playerStates[7] &&
+       this.currentState !== this.playerStates[8]) this.speed = this.maxSpeed;
+    else if(input.includes('ArrowLeft') &&
+            this.currentState !== this.playerStates[6] &&
+            this.currentState !== this.playerStates[7] &&
+            this.currentState !== this.playerStates[8]) this.speed = -this.maxSpeed;
+            
     else this.speed = 0;
 
     //Horizontal Boundaries
