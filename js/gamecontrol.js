@@ -23,6 +23,8 @@ class GameControl {
       this.enemyTimer = 0;
       this.enemyInterval = 1000;
 
+      this.collisions = [];
+
       this.debug = false;
       this.score = 0;
       this.fontColor = 'black';
@@ -59,6 +61,12 @@ class GameControl {
           //this.particles = this.particles.slice(0, this.maxParticles);
       }
 
+      //Handle Collision Sprites
+      this.collisions.forEach((collision, index) => {
+          collision.update(deltaTime);
+          if(collision.markedForDeletion) this.collisions.splice(index, 1);
+      });
+
     }
 
     startGameLoop(context) {
@@ -78,6 +86,11 @@ class GameControl {
           //Draw Particles
           this.particles.forEach(particle => {
               particle.draw(context);
+          });
+
+          //Draw Collision Sprites
+          this.collisions.forEach(collision => {
+              collision.draw(context);
           });
 
           this.UI.draw(context)

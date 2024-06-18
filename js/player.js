@@ -24,7 +24,8 @@ class Player {
 
       this.playerStates = [new Sitting(this.game), new Running(this.game),
                            new Jumping(this.game), new Falling(this.game),
-                           new Rolling(this.game), new Diving(this.game)];
+                           new Rolling(this.game), new Diving(this.game),
+                           new Hit(this.game)];
 
   }
 
@@ -39,6 +40,8 @@ class Player {
     if(input.includes('ArrowRight')) this.speed = this.maxSpeed;
     else if(input.includes('ArrowLeft')) this.speed = -this.maxSpeed;
     else this.speed = 0;
+
+    //Horizontal Boundaries
     if(this.x < 0) this.x = 0;
     if(this.x > this.game.width - this.width) this.x = this.game.width - this.width;
 
@@ -48,7 +51,7 @@ class Player {
     if(!this.onGround()) this.vy += this.gravity;
     else this.vy = 0;
 
-    //VERTICAL BOUNDARIES
+    //Vertical Boundaries
     if(this.y > this.game.height - this.height - this.game.groundMargin) {
         this.y = this.game.height - this.height - this.game.groundMargin;
     }
@@ -83,21 +86,34 @@ class Player {
   }
 
   checkCollision() {
-    this.game.enemies.forEach(enemy => {
-        if(enemy.x < this.x + this.width &&
-        enemy.x + enemy.width > this.x &&
-        enemy.y < this.y + this.height &&
-        enemy.y + enemy.height > this.y) {
-          //collision detected
+      this.game.enemies.forEach(enemy => {
+          if(enemy.x < this.x + this.width &&
+          enemy.x + enemy.width > this.x &&
+          enemy.y < this.y + this.height &&
+          enemy.y + enemy.height > this.y) {
+            //collision detected
 
-          enemy.markedForDeletion = true;
-          this.game.score++;
+            enemy.markedForDeletion = true;
+            this.game.collisions.push(new CollisionAnimation(this.game, enemy.x + enemy.width * 0.5,
+                                                             enemy.y + enemy.height * 0.5));
 
-        }
-        // else {
-        //   //no collision
-        // }
-    });
+            if( this.currentState === this.playerStates[4] ||
+                this.currentState === this.playerStates[5]) {
+                  this.game.score++;
+            } else {
+                this.setState(6, 0);
+                this.game.lives--;
+
+                //Will set gameOver to true in Knockout Class
+                //if(this.game.lives <= 0) this.game.gameOver = true;
+                if(this.game.lives <= 0) this.setState(8, 0);
+            }
+
+          }
+          // else {
+          //   //no collision
+          // }
+      });
   }
 
 }

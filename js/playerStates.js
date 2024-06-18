@@ -152,3 +152,25 @@ class Falling extends PlayerState {
 
     }
 }
+
+
+class Hit extends PlayerState {
+    constructor(game) {
+        super('HIT', game);
+    }
+    enter() {
+        this.game.player.frameX = 0;
+        this.game.player.frameY = 9;
+        this.game.player.maxFrame = 3;
+
+        //Slight jump back when hit
+        this.game.player.vy -= 4;
+    }
+    handleInput(input) {
+        if(this.game.player.frameX >= 3 && this.game.player.onGround()) {
+            this.game.player.setState(playerStates.DIZZY, 0);
+        } else if(this.game.player.frameX >= 3 && !this.game.player.onGround()) {
+            this.game.player.setState(playerStates.FALLING, 3);
+        }
+    }
+}
