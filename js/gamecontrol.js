@@ -51,7 +51,8 @@ class GameControl {
       this.score = 0;
       this.lives = 5;
       this.gameOver = false;
-      animate(0);
+      this.init();
+      // animate(0);
     }
 
     update(deltaTime) {

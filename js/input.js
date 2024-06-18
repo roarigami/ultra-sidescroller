@@ -14,6 +14,9 @@ class InputHandler {
           } else if(e.key === 'd') this.game.debug = !this.game.debug;
           //console.log(e.key);
 
+          //Restart the game
+          if(e.key === 'Enter' && this.game.gameOver) this.game.restartGame();
+
       });
       window.addEventListener('keyup', (e) => {
           //console.log(e.key);
