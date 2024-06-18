@@ -41,6 +41,19 @@ class GameControl {
       this.gameOver = false;
     }
 
+    restartGame() {
+      this.player.x = 0;
+      this.player.y = this.height - this.player.height - this.groundMargin;
+      this.player.frameY = 0;
+      this.player.frameX = 0;
+      this.player.currentState = this.player.playerStates[0];
+      this.enemies = [];
+      this.score = 0;
+      this.lives = 5;
+      this.gameOver = false;
+      animate(0);
+    }
+
     update(deltaTime) {
       this.background.update();
       this.player.update(this.input.keys, deltaTime);
@@ -101,7 +114,7 @@ class GameControl {
 
           this.UI.draw(context)
 
-          requestAnimationFrame(animate);
+          if(!game.gameOver) requestAnimationFrame(animate);
 
           //Does not pass deltaTime variable. frameTimer NaN
           // requestAnimationFrame(() => {
